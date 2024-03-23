@@ -1,11 +1,9 @@
-package dev.mcoliveira.aluguelfilmes.domain.entities;
+package dev.mcoliveira.aluguelfilmes.infra.dtos.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
@@ -13,10 +11,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "alugueis")
-public class Aluguel {
-
-    @Id
+public class AluguelResponseDTO {
     private String id;
     private String idDoFilme;
     private String idDoCliente;

@@ -1,21 +1,15 @@
-package dev.mcoliveira.aluguelfilmes.domain.entities;
+package dev.mcoliveira.aluguelfilmes.infra.dtos.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "filmes")
-public class Filme {
-
-    @Id
-    private String id;
+public class FilmeRequestDTO {
     private String titulo;
     private String diretor;
     private int anoLancamento;
