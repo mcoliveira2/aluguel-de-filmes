@@ -13,6 +13,7 @@ public class AluguelConverter {
                 .idDoCliente(dto.getIdDoCliente())
                 .dataDoAluguel(dto.getDataDoAluguel())
                 .dataDevolucaoPrevista(dto.getDataDevolucaoPrevista())
+                .dataDevolucao(dto.getDataDevolucao())
                 .build();
     }
 }

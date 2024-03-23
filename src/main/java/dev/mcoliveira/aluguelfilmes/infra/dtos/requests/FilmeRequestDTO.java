@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FilmeRequestDTO {
+    private String id;
     private String titulo;
     private String diretor;
     private int anoLancamento;

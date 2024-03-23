@@ -16,4 +16,5 @@ public class AluguelRequestDTO {
     private String idDoCliente;
     private LocalDate dataDoAluguel;
     private LocalDate dataDevolucaoPrevista;
+    private LocalDate dataDevolucao;
 }

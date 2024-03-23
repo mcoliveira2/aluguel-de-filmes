@@ -9,6 +9,7 @@ public class FilmeConverter {
 
     public Filme toEntity(FilmeRequestDTO dto) {
         return Filme.builder()
+                .id(dto.getId())
                 .titulo(dto.getTitulo())
                 .diretor(dto.getDiretor())
                 .anoLancamento(dto.getAnoLancamento())
