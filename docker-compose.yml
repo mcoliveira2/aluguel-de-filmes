@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+  app:
+    build: .
+    environment:
+      - MONGODB_HOST=mongodb
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb

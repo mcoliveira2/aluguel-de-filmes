@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: aluguelfilmes
+  data:
+    mongodb:
+      host: ${MONGODB_HOST:localhost}
+      port: 27017
