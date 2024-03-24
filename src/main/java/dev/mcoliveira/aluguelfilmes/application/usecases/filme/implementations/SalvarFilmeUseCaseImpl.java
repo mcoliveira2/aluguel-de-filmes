@@ -3,7 +3,7 @@ package dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations;
 import dev.mcoliveira.aluguelfilmes.application.converters.FilmeConverter;
 import dev.mcoliveira.aluguelfilmes.application.mappers.FilmeMapper;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.SalvarFilmeUseCase;
-import dev.mcoliveira.aluguelfilmes.application.validations.filme.SalvarFilmeValidator;
+import dev.mcoliveira.aluguelfilmes.application.validators.filme.SalvarFilmeValidator;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.FilmeRequestDTO;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;

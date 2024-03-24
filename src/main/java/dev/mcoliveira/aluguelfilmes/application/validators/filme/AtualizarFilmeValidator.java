@@ -1,4 +1,4 @@
-package dev.mcoliveira.aluguelfilmes.application.validations.filme;
+package dev.mcoliveira.aluguelfilmes.application.validators.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.exceptions.filme.ValidacaoFilmeException;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCase;

@@ -1,8 +1,7 @@
 package dev.mcoliveira.aluguelfilmes.application.usecases.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations.AtualizarFilmeUseCaseImpl;
-import dev.mcoliveira.aluguelfilmes.application.validations.filme.AtualizarFilmeValidator;
-import dev.mcoliveira.aluguelfilmes.application.validations.filme.SalvarFilmeValidator;
+import dev.mcoliveira.aluguelfilmes.application.validators.filme.AtualizarFilmeValidator;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.FilmeRequestDTO;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;

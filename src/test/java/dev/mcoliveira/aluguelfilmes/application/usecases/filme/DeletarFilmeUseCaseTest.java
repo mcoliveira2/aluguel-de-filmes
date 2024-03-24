@@ -1,8 +1,7 @@
 package dev.mcoliveira.aluguelfilmes.application.usecases.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations.DeletarFilmeUseCaseImpl;
-import dev.mcoliveira.aluguelfilmes.application.validations.filme.AtualizarFilmeValidator;
-import dev.mcoliveira.aluguelfilmes.application.validations.filme.DeletarFilmeValidator;
+import dev.mcoliveira.aluguelfilmes.application.validators.filme.DeletarFilmeValidator;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.FilmeRepository;
 import org.junit.jupiter.api.Test;

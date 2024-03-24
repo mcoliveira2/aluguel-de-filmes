@@ -1,4 +1,4 @@
-package dev.mcoliveira.aluguelfilmes.application.validations.filme;
+package dev.mcoliveira.aluguelfilmes.application.validators.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.exceptions.filme.ValidacaoFilmeException;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class FilmeValidator {
 
     public void validarAnoLancamento(Integer ano) {
         if (nonNull(ano) && (ano < ANO_MINIMO || ano > ANO_MAXIMO)) {
-            throw new ValidacaoFilmeException("O 'ano de lançamento' deve estar entre " + ANO_MINIMO + " e " + ANO_MAXIMO);
+            throw new ValidacaoFilmeException("O 'ano de lançamento' do filme deve estar entre " + ANO_MINIMO + " e " + ANO_MAXIMO);
         }
     }
 }

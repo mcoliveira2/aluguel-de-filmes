@@ -1,4 +1,4 @@
-package dev.mcoliveira.aluguelfilmes.application.validations.filme;
+package dev.mcoliveira.aluguelfilmes.application.validators.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.exceptions.filme.ValidacaoFilmeException;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCase;
@@ -15,13 +15,14 @@ public class SalvarFilmeValidator extends FilmeValidator {
     public SalvarFilmeValidator(BuscarFilmeUseCase buscarFilmeUseCase) {
         this.buscarFilmeUseCase = buscarFilmeUseCase;
     }
+
     public void validar(FilmeRequestDTO filme) {
         validarCamposObrigatorios(filme);
         super.validarAnoLancamento(filme.getAnoLancamento());
         validarFilmeExistente(filme.getTitulo(), filme.getAnoLancamento());
     }
 
-    public void validarCamposObrigatorios(FilmeRequestDTO filme) throws ValidacaoFilmeException {
+    public void validarCamposObrigatorios(FilmeRequestDTO filme) {
         if (filme.getTitulo() == null || filme.getTitulo().isEmpty()) {
             throw new ValidacaoFilmeException("O 'título' do filme é obrigatório.");
         }
