@@ -9,7 +9,6 @@ public class ClienteConverter {
 
     public Cliente toEntity(ClienteRequestDTO dto) {
         return Cliente.builder()
-                .id(dto.getId())
                 .nome(dto.getNome())
                 .email(dto.getEmail())
                 .telefone(dto.getTelefone())

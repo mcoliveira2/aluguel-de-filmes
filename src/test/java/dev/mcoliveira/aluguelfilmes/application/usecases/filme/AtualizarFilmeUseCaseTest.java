@@ -1,5 +1,6 @@
 package dev.mcoliveira.aluguelfilmes.application.usecases.filme;
 
+import dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations.AtualizarFilmeUseCaseImpl;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.FilmeRequestDTO;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
@@ -22,28 +23,21 @@ class AtualizarFilmeUseCaseTest {
     @Mock
     private FilmeRepository filmeRepository;
 
-    //@InjectMocks
-    //private AtualizarFilmeUseCaseImpl atualizarFilmeUseCase;
+    @InjectMocks
+    private AtualizarFilmeUseCaseImpl atualizarFilmeUseCase;
 
     @Test
     void atualizarFilme_Successo() {
         String filmeId = "1";
-        FilmeRequestDTO filmeRequestDTO = new FilmeRequestDTO();
-        filmeRequestDTO.setTitulo("Novo Título");
-        filmeRequestDTO.setAnoLancamento(2021);
-
-        Filme filmeExistente = new Filme();
-        filmeExistente.setId(filmeId);
-        filmeExistente.setTitulo("Título Antigo");
-        filmeExistente.setAnoLancamento(2022);
+        FilmeRequestDTO filmeRequestDTO = FilmeRequestDTO.builder().titulo("Novo Título").anoLancamento(2021).build();
+        Filme filmeExistente = Filme.builder().id(filmeId).titulo("Título Antigo").anoLancamento(2022).build();
 
         when(filmeRepository.findById(filmeId)).thenReturn(Optional.of(filmeExistente));
         when(filmeRepository.save(any(Filme.class))).thenAnswer(invocation -> invocation.<Filme>getArgument(0));
+        FilmeResponseDTO responseDTO = atualizarFilmeUseCase.executar(filmeId, filmeRequestDTO);
 
-//        FilmeResponseDTO responseDTO = atualizarFilmeUseCase.executar(filmeId, filmeRequestDTO);
-//
-//        assertEquals(filmeId, responseDTO.getId());
-//        assertEquals(filmeRequestDTO.getTitulo(), responseDTO.getTitulo());
-//        assertEquals(filmeRequestDTO.getAnoLancamento(), responseDTO.getAnoLancamento());
+        assertEquals(filmeId, responseDTO.getId());
+        assertEquals(filmeRequestDTO.getTitulo(), responseDTO.getTitulo());
+        assertEquals(filmeRequestDTO.getAnoLancamento(), responseDTO.getAnoLancamento());
     }
 }

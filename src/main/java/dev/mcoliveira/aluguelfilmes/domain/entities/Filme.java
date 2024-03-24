@@ -19,7 +19,7 @@ public class Filme {
     private String id;
     private String titulo;
     private String diretor;
-    private int anoLancamento;
+    private Integer anoLancamento;
     private Genero genero;
-    private boolean disponivel;
+    private Boolean disponivel;
 }
