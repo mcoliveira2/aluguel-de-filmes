@@ -13,7 +13,7 @@ public class FilmeResponseDTO {
     private String id;
     private String titulo;
     private String diretor;
-    private int anoLancamento;
+    private Integer anoLancamento;
     private String genero;
-    private boolean disponivel;
+    private Boolean disponivel;
 }
