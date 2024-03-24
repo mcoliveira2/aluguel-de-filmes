@@ -21,7 +21,6 @@ public class BuscarFilmeUseCaseTest {
 
     @Mock
     private FilmeRepository filmeRepository;
-
     @InjectMocks
     private BuscarFilmeUseCaseImpl buscarFilmeUseCase;
 

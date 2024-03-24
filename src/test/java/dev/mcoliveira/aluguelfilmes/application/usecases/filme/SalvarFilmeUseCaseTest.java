@@ -2,6 +2,7 @@ package dev.mcoliveira.aluguelfilmes.application.usecases.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.converters.FilmeConverter;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations.SalvarFilmeUseCaseImpl;
+import dev.mcoliveira.aluguelfilmes.application.validators.filme.SalvarFilmeValidator;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.domain.enums.Genero;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.FilmeRequestDTO;
@@ -23,6 +24,9 @@ class SalvarFilmeUseCaseTest {
 
     @Mock
     private FilmeRepository filmeRepository;
+
+    @Mock
+    private SalvarFilmeValidator salvarFilmeValidator;
 
     @InjectMocks
     private SalvarFilmeUseCaseImpl salvarFilmeUseCase;
