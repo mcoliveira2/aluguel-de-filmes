@@ -1,5 +1,6 @@
 package dev.mcoliveira.aluguelfilmes.infra.dtos.requests;
 
+import dev.mcoliveira.aluguelfilmes.domain.enums.Genero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,6 @@ public class FilmeRequestDTO {
     private String titulo;
     private String diretor;
     private int anoLancamento;
-    private String genero;
+    private Genero genero;
     private boolean disponivel;
 }

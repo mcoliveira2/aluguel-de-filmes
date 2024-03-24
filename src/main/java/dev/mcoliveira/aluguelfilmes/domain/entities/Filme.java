@@ -1,5 +1,6 @@
 package dev.mcoliveira.aluguelfilmes.domain.entities;
 
+import dev.mcoliveira.aluguelfilmes.domain.enums.Genero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,6 @@ public class Filme {
     private String titulo;
     private String diretor;
     private int anoLancamento;
-    private String genero;
+    private Genero genero;
     private boolean disponivel;
 }

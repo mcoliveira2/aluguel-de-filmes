@@ -13,7 +13,7 @@ public class FilmeMapper {
                 .titulo(filme.getTitulo())
                 .diretor(filme.getDiretor())
                 .anoLancamento(filme.getAnoLancamento())
-                .genero(filme.getGenero())
+                .genero(filme.getGenero().getDescricao())
                 .disponivel(filme.isDisponivel())
                 .build();
     }
