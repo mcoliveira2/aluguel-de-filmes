@@ -1,6 +1,8 @@
 package dev.mcoliveira.aluguelfilmes.application.usecases.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations.DeletarFilmeUseCaseImpl;
+import dev.mcoliveira.aluguelfilmes.application.validations.filme.AtualizarFilmeValidator;
+import dev.mcoliveira.aluguelfilmes.application.validations.filme.DeletarFilmeValidator;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.FilmeRepository;
 import org.junit.jupiter.api.Test;
@@ -18,7 +20,8 @@ import static org.mockito.Mockito.when;
 public class DeletarFilmeUseCaseTest {
     @Mock
     private FilmeRepository filmeRepository;
-
+    @Mock
+    private DeletarFilmeValidator deletarFilmeValidator;
     @InjectMocks
     private DeletarFilmeUseCaseImpl deletarFilmeUseCase;
 

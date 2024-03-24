@@ -22,7 +22,6 @@ public class ListarFilmesDisponiveisUseCaseTest {
 
     @Mock
     private FilmeRepository filmeRepository;
-
     @InjectMocks
     private ListarFilmesDisponiveisUseCaseImpl listarFilmesDisponiveisUseCase;
 
