@@ -13,6 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -34,5 +36,17 @@ public class BuscarFilmeUseCaseTest {
 
         assertEquals(filmeId, result.getId());
         verify(filmeRepository).findById(filmeId);
+    }
+
+    @Test
+    public void buscarFilmePorTituloEAnoLancamento_Sucesso() {
+        Filme filme = Filme.builder().id("123").titulo("titulo").anoLancamento(2010).build();
+
+        when(filmeRepository.findByTituloAndAnoLancamento(anyString(), anyInt())).thenReturn(Optional.of(filme));
+        Optional<FilmeResponseDTO> result =
+                buscarFilmeUseCase.executarPorTituloEAnoLancamento(filme.getTitulo(), filme.getAnoLancamento());
+
+        assertEquals(filme.getId(), result.get().getId());
+        verify(filmeRepository).findByTituloAndAnoLancamento(filme.getTitulo(), filme.getAnoLancamento());
     }
 }

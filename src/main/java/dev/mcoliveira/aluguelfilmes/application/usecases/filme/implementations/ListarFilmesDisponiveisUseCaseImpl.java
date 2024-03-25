@@ -6,7 +6,9 @@ import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.FilmeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,8 +24,8 @@ public class ListarFilmesDisponiveisUseCaseImpl implements ListarFilmesDisponive
     }
 
     @Override
-    public List<FilmeResponseDTO> executar() {
-        List<Filme> filmesDisponiveis = filmeRepository.findByDisponivelTrue();
+    public List<FilmeResponseDTO> executar(Pageable pageable) {
+        List<Filme> filmesDisponiveis = filmeRepository.findByDisponivelTrue(pageable);
         return filmesDisponiveis.stream()
                 .map(FilmeMapper::toFilmeResponseDTO)
                 .collect(Collectors.toList());

@@ -1,11 +1,10 @@
 package dev.mcoliveira.aluguelfilmes.application.validators.filme;
 
-import dev.mcoliveira.aluguelfilmes.application.exceptions.filme.ValidacaoFilmeException;
+import dev.mcoliveira.aluguelfilmes.application.exceptions.ValidacaoException;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCase;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -17,13 +16,9 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class AtualizarFilmeValidatorTest {
-
+public class FilmeExistenteValidatorTest {
     @Mock
     private BuscarFilmeUseCase buscarFilmeUseCase;
-
-    @InjectMocks
-    private AtualizarFilmeValidator atualizarFilmeValidator;
 
     @Test
     void validarFilmeExistente_FilmeExistenteComIdDiferente_DeveLancarExcecao() {
@@ -37,8 +32,8 @@ public class AtualizarFilmeValidatorTest {
         when(buscarFilmeUseCase.executarPorTituloEAnoLancamento(anyString(), anyInt()))
                 .thenReturn(Optional.of(filmeExistente));
 
-        assertThrows(ValidacaoFilmeException.class, () ->
-                atualizarFilmeValidator.validarFilmeExistente(titulo, anoLancamento, filmeId));
+        assertThrows(ValidacaoException.class, () ->
+                FilmeExistenteValidator.validar(titulo, anoLancamento, filmeId, buscarFilmeUseCase));
     }
 
     @Test
@@ -50,7 +45,7 @@ public class AtualizarFilmeValidatorTest {
         when(buscarFilmeUseCase.executarPorTituloEAnoLancamento(anyString(), anyInt()))
                 .thenReturn(Optional.empty());
 
-        atualizarFilmeValidator.validarFilmeExistente(titulo, anoLancamento, filmeId);
+        FilmeExistenteValidator.validar(titulo, anoLancamento, filmeId, buscarFilmeUseCase);
     }
 
     @Test
@@ -65,6 +60,6 @@ public class AtualizarFilmeValidatorTest {
         when(buscarFilmeUseCase.executarPorTituloEAnoLancamento(anyString(), anyInt()))
                 .thenReturn(Optional.of(filmeExistente));
 
-        atualizarFilmeValidator.validarFilmeExistente(titulo, anoLancamento, filmeId);
+        FilmeExistenteValidator.validar(titulo, anoLancamento, filmeId, buscarFilmeUseCase);
     }
 }
