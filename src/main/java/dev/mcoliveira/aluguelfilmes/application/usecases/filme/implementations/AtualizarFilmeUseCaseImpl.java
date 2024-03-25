@@ -5,7 +5,9 @@ import dev.mcoliveira.aluguelfilmes.application.converters.FilmeConverter;
 import dev.mcoliveira.aluguelfilmes.application.exceptions.filme.FilmeNaoEncontradoException;
 import dev.mcoliveira.aluguelfilmes.application.mappers.FilmeMapper;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.AtualizarFilmeUseCase;
-import dev.mcoliveira.aluguelfilmes.application.validators.filme.AtualizarFilmeValidator;
+import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCase;
+import dev.mcoliveira.aluguelfilmes.application.validators.filme.AnoLancamentoFilmeValidator;
+import dev.mcoliveira.aluguelfilmes.application.validators.filme.FilmeExistenteValidator;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.FilmeRequestDTO;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
@@ -17,21 +19,25 @@ import org.springframework.stereotype.Service;
 public class AtualizarFilmeUseCaseImpl implements AtualizarFilmeUseCase {
 
     private final FilmeRepository filmeRepository;
-    private final AtualizarFilmeValidator atualizarFilmeValidator;
+    private final BuscarFilmeUseCase buscarFilmeUseCase;
 
     @Autowired
-    public AtualizarFilmeUseCaseImpl(FilmeRepository filmeRepository, AtualizarFilmeValidator atualizarFilmeValidator) {
+    public AtualizarFilmeUseCaseImpl(FilmeRepository filmeRepository, BuscarFilmeUseCase buscarFilmeUseCase) {
         this.filmeRepository = filmeRepository;
-        this.atualizarFilmeValidator = atualizarFilmeValidator;
+        this.buscarFilmeUseCase = buscarFilmeUseCase;
     }
 
     @Override
     public FilmeResponseDTO executar(String id, FilmeRequestDTO filmeRequestDTO) {
-        atualizarFilmeValidator.validarAnoLancamento(filmeRequestDTO.getAnoLancamento());
+        AnoLancamentoFilmeValidator.validar(filmeRequestDTO.getAnoLancamento());
         Filme filmeExistente = filmeRepository.findById(id).orElseThrow(FilmeNaoEncontradoException::new);
         Filme filmeParaAtualizar = FilmeConverter.toEntityUpdate(filmeRequestDTO, filmeExistente);
-        atualizarFilmeValidator.validarFilmeExistente(
-                filmeParaAtualizar.getTitulo(), filmeParaAtualizar.getAnoLancamento(), filmeParaAtualizar.getId());
+        FilmeExistenteValidator.validar(
+                filmeParaAtualizar.getTitulo(),
+                filmeParaAtualizar.getAnoLancamento(),
+                filmeParaAtualizar.getId(),
+                buscarFilmeUseCase
+        );
         return FilmeMapper.toFilmeResponseDTO(filmeRepository.save(filmeParaAtualizar));
     }
 }
