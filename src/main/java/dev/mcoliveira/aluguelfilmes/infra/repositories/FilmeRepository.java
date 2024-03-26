@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface FilmeRepository extends MongoRepository<Filme, String> {
 
-    List<Filme> findByDisponivelTrue(Pageable pageable);
-    Optional<Filme> findByTituloAndAnoLancamento(String titulo, Integer anoLancamento);
+    Optional<Filme> findByIdAndDeletadoFalse(String id);
+    List<Filme> findByDisponivelTrueAndDeletadoFalse(Pageable pageable);
+    Optional<Filme> findByTituloAndAnoLancamentoAndDeletadoFalse(String titulo, Integer anoLancamento);
 }

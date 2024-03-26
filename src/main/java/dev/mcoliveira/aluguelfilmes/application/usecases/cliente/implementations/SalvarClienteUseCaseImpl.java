@@ -30,6 +30,7 @@ public class SalvarClienteUseCaseImpl implements SalvarClienteUseCase {
     public ClienteResponseDTO executar(ClienteRequestDTO clienteRequestDTO) {
         validarClienteAntesDeSalvar(clienteRequestDTO);
         Cliente cliente = ClienteConverter.toEntity(clienteRequestDTO);
+        cliente.setDeletado(Boolean.FALSE);
         return ClienteMapper.toClienteResponseDTO(clienteRepository.save(cliente));
     }
 

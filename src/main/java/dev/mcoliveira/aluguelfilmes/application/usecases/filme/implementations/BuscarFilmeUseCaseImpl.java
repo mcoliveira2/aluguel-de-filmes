@@ -22,14 +22,14 @@ public class BuscarFilmeUseCaseImpl implements BuscarFilmeUseCase {
 
     @Override
     public FilmeResponseDTO executar(String id) {
-        return filmeRepository.findById(id)
+        return filmeRepository.findByIdAndDeletadoFalse(id)
                 .map(FilmeMapper::toFilmeResponseDTO)
                 .orElseThrow(FilmeNaoEncontradoException::new);
     }
 
     @Override
     public Optional<FilmeResponseDTO> executarPorTituloEAnoLancamento(String titulo, Integer anoLancamento) {
-        return filmeRepository.findByTituloAndAnoLancamento(titulo, anoLancamento)
+        return filmeRepository.findByTituloAndAnoLancamentoAndDeletadoFalse(titulo, anoLancamento)
                 .map(FilmeMapper::toFilmeResponseDTO);
     }
 }

@@ -22,14 +22,14 @@ public class BuscarClienteUseCaseImpl implements BuscarClienteUseCase {
 
     @Override
     public ClienteResponseDTO executar(String id) {
-        return clienteRepository.findById(id)
+        return clienteRepository.findByIdAndDeletadoFalse(id)
                 .map(ClienteMapper::toClienteResponseDTO)
                 .orElseThrow(ClienteNaoEncontradoException::new);
     }
 
     @Override
     public Optional<ClienteResponseDTO> executarPorEmail(String email) {
-        return clienteRepository.findByEmail(email)
+        return clienteRepository.findByEmailAndDeletadoFalse(email)
                 .map(ClienteMapper::toClienteResponseDTO);
     }
 }

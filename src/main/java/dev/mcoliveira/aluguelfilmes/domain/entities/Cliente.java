@@ -18,4 +18,5 @@ public class Cliente {
     private String id;
     private String email;
     private String nome;
+    private Boolean deletado;
 }

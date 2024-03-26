@@ -31,6 +31,7 @@ public class SalvarFilmeUseCaseImpl implements SalvarFilmeUseCase {
         validarFilmeAntesDeSalvar(filmeRequestDTO);
         Filme filme = FilmeConverter.toEntity(filmeRequestDTO);
         filme.setDisponivel(Boolean.TRUE);
+        filme.setDeletado(Boolean.FALSE);
         return FilmeMapper.toFilmeResponseDTO(filmeRepository.save(filme));
     }
 

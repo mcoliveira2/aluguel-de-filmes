@@ -2,6 +2,7 @@ package dev.mcoliveira.aluguelfilmes.application.usecases.aluguel;
 
 import dev.mcoliveira.aluguelfilmes.application.usecases.aluguel.implementations.DevolverFilmeUseCaseImpl;
 import dev.mcoliveira.aluguelfilmes.application.usecases.cliente.BuscarClienteUseCase;
+import dev.mcoliveira.aluguelfilmes.application.usecases.filme.AlterarDisponibilidadeFilmeUseCase;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCase;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Aluguel;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.AluguelRequestDTO;
@@ -16,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -31,6 +33,8 @@ public class DevolverFilmeUseCaseTest {
     private BuscarFilmeUseCase buscarFilmeUseCase;
     @Mock
     private BuscarClienteUseCase buscarClienteUseCase;
+    @Mock
+    private AlterarDisponibilidadeFilmeUseCase alterarDisponibilidadeFilmeUseCase;
     @InjectMocks
     private DevolverFilmeUseCaseImpl devolverFilmeUseCase;
 
@@ -48,6 +52,7 @@ public class DevolverFilmeUseCaseTest {
 
         when(buscarFilmeUseCase.executar(idDoFilme)).thenReturn(FilmeResponseDTO.builder().id(idDoFilme).build());
         when(buscarClienteUseCase.executar(idDoCliente)).thenReturn(ClienteResponseDTO.builder().id(idDoFilme).build());
+        when(aluguelRepository.findByIdDoClienteAndIdDoFilme(any(), any())).thenReturn(Optional.ofNullable(aluguel));
         when(aluguelRepository.save(any())).thenReturn(aluguel);
 
         AluguelResponseDTO response = devolverFilmeUseCase.executar(

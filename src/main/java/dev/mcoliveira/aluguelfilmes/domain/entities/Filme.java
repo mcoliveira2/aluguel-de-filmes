@@ -22,4 +22,5 @@ public class Filme {
     private Integer anoLancamento;
     private Genero genero;
     private Boolean disponivel;
+    private Boolean deletado;
 }

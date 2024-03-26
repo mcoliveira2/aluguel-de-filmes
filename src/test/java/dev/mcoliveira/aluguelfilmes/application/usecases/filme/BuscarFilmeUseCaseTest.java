@@ -31,22 +31,22 @@ public class BuscarFilmeUseCaseTest {
         String filmeId = "123";
         Filme filme = Filme.builder().id("123").build();
 
-        when(filmeRepository.findById(filmeId)).thenReturn(Optional.of(filme));
+        when(filmeRepository.findByIdAndDeletadoFalse(filmeId)).thenReturn(Optional.of(filme));
         FilmeResponseDTO result = buscarFilmeUseCase.executar(filmeId);
 
         assertEquals(filmeId, result.getId());
-        verify(filmeRepository).findById(filmeId);
+        verify(filmeRepository).findByIdAndDeletadoFalse(filmeId);
     }
 
     @Test
     public void buscarFilmePorTituloEAnoLancamento_Sucesso() {
         Filme filme = Filme.builder().id("123").titulo("titulo").anoLancamento(2010).build();
 
-        when(filmeRepository.findByTituloAndAnoLancamento(anyString(), anyInt())).thenReturn(Optional.of(filme));
+        when(filmeRepository.findByTituloAndAnoLancamentoAndDeletadoFalse(anyString(), anyInt())).thenReturn(Optional.of(filme));
         Optional<FilmeResponseDTO> result =
                 buscarFilmeUseCase.executarPorTituloEAnoLancamento(filme.getTitulo(), filme.getAnoLancamento());
 
         assertEquals(filme.getId(), result.get().getId());
-        verify(filmeRepository).findByTituloAndAnoLancamento(filme.getTitulo(), filme.getAnoLancamento());
+        verify(filmeRepository).findByTituloAndAnoLancamentoAndDeletadoFalse(filme.getTitulo(), filme.getAnoLancamento());
     }
 }

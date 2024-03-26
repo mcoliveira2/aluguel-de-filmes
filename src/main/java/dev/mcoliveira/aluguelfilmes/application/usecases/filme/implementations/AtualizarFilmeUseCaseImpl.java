@@ -30,7 +30,8 @@ public class AtualizarFilmeUseCaseImpl implements AtualizarFilmeUseCase {
     @Override
     public FilmeResponseDTO executar(String id, FilmeRequestDTO filmeRequestDTO) {
         AnoLancamentoFilmeValidator.validar(filmeRequestDTO.getAnoLancamento());
-        Filme filmeExistente = filmeRepository.findById(id).orElseThrow(FilmeNaoEncontradoException::new);
+        Filme filmeExistente = filmeRepository.findByIdAndDeletadoFalse(id)
+                .orElseThrow(FilmeNaoEncontradoException::new);
         Filme filmeParaAtualizar = FilmeConverter.toEntityUpdate(filmeRequestDTO, filmeExistente);
         FilmeExistenteValidator.validar(
                 filmeParaAtualizar.getTitulo(),

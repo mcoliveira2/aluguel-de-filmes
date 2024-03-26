@@ -2,6 +2,7 @@ package dev.mcoliveira.aluguelfilmes.application.usecases.filme;
 
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations.BuscarFilmeUseCaseImpl;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.implementations.DeletarFilmeUseCaseImpl;
+import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.FilmeRepository;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -17,19 +20,17 @@ import static org.mockito.Mockito.when;
 public class DeletarFilmeUseCaseTest {
     @Mock
     private FilmeRepository filmeRepository;
-    @Mock
-    private BuscarFilmeUseCaseImpl buscarFilmeUseCase;
     @InjectMocks
     private DeletarFilmeUseCaseImpl deletarFilmeUseCase;
 
     @Test
     public void deletarFilme_Sucesso() {
         String filmeId = "1";
-        FilmeResponseDTO filme = FilmeResponseDTO.builder().id(filmeId).build();
+        Filme filme = Filme.builder().id(filmeId).build();
 
-        when(buscarFilmeUseCase.executar(filmeId)).thenReturn(filme);
+        when(filmeRepository.findByIdAndDeletadoFalse(filmeId)).thenReturn(Optional.ofNullable(filme));
         deletarFilmeUseCase.executar(filmeId);
 
-        verify(filmeRepository).deleteById(filmeId);
+        verify(filmeRepository).save(filme);
     }
 }

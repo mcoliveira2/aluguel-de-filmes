@@ -23,6 +23,7 @@ public class ClienteConverter {
                 .id(cliente.getId())
                 .nome(nonNull(dto.getNome()) ? dto.getNome() : cliente.getNome())
                 .email(nonNull(dto.getEmail()) ? dto.getEmail() : cliente.getEmail())
+                .deletado(cliente.getDeletado())
                 .build();
     }
 }
