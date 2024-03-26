@@ -11,5 +11,5 @@ public interface AluguelRepository extends MongoRepository<Aluguel, String> {
     @Query(value = "{'idDoCliente' : ?0, 'dataDaDevolucao' : null}", exists = true)
     Boolean findByIdDoClienteAndDataDaDevolucaoNull(String idDoCliente);
 
-    Optional<Aluguel> findByIdDoClienteAndIdDoFilme(String idDoCliente, String idDoFilme);
+    Optional<Aluguel> findByIdDoClienteAndIdDoFilmeAndDataDaDevolucaoNull(String idDoCliente, String idDoFilme);
 }

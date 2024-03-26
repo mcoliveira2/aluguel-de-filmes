@@ -2,16 +2,14 @@ package dev.mcoliveira.aluguelfilmes.application.validators.aluguel;
 
 import dev.mcoliveira.aluguelfilmes.application.exceptions.ValidacaoException;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.AluguelRequestDTO;
-import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.ClienteRequestDTO;
 import org.springframework.stereotype.Component;
 
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_CLINTE_ID_OBRIGATORIO;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_FILME_ID_OBRIGATORIO;
 import static java.util.Objects.isNull;
 
 @Component
 public class CamposObrigatoriosAluguelValidator {
-
-    private static final String ERRO_FILME_ID_OBRIGATORIO = "O 'id' do filme é obrigatório.";
-    private static final String ERRO_CLINTE_ID_OBRIGATORIO = "O 'id' do cliente é obrigatório.";
 
     public static void validar(AluguelRequestDTO aluguel) {
         if (isNull(aluguel.getIdDoFilme())) {

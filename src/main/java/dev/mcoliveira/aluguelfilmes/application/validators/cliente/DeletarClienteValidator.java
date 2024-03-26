@@ -4,10 +4,10 @@ import dev.mcoliveira.aluguelfilmes.application.exceptions.ValidacaoException;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.AluguelRepository;
 import org.springframework.stereotype.Component;
 
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_DELETAR_CLIENT_COM_FILME_ALUGADOR;
+
 @Component
 public class DeletarClienteValidator {
-    private static final String ERRO_DELETAR_CLIENT_COM_FILME_ALUGADOR =
-            "O cliente não pode ser deletado, pois possui filme alugado";
 
     public static void validar(String idDoCliente,  AluguelRepository aluguelRepository) {
         if (aluguelRepository.findByIdDoClienteAndDataDaDevolucaoNull(idDoCliente)) {

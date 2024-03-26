@@ -5,10 +5,10 @@ import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCas
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
 import org.springframework.stereotype.Component;
 
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_FILME_JA_ESTA_ALUGADO;
+
 @Component
 public class FilmeJaEstaAlugadoValidator {
-
-    private static final String ERRO_FILME_JA_ESTA_ALUGADO = "O filme já está alugado.";
 
     public static void validar(String idDoFilme, BuscarFilmeUseCase buscarFilmeUseCase) {
         FilmeResponseDTO filme = buscarFilmeUseCase.executar(idDoFilme);

@@ -52,7 +52,8 @@ public class DevolverFilmeUseCaseTest {
 
         when(buscarFilmeUseCase.executar(idDoFilme)).thenReturn(FilmeResponseDTO.builder().id(idDoFilme).build());
         when(buscarClienteUseCase.executar(idDoCliente)).thenReturn(ClienteResponseDTO.builder().id(idDoFilme).build());
-        when(aluguelRepository.findByIdDoClienteAndIdDoFilme(any(), any())).thenReturn(Optional.ofNullable(aluguel));
+        when(aluguelRepository.findByIdDoClienteAndIdDoFilmeAndDataDaDevolucaoNull(any(), any()))
+                .thenReturn(Optional.ofNullable(aluguel));
         when(aluguelRepository.save(any())).thenReturn(aluguel);
 
         AluguelResponseDTO response = devolverFilmeUseCase.executar(

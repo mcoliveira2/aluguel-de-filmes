@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_FILME_EXISTENTE;
+
 @Component
 public class FilmeExistenteValidator {
-
-    private static final String ERRO_FILME_EXISTENTE = "Já existe um filme com o mesmo título e ano de lançamento.";
 
     public static void validar(String titulo, Integer anoLancamento, String filmeId, BuscarFilmeUseCase buscarFilmeUseCase) {
         Optional<FilmeResponseDTO> filmeExistente = buscarFilmeUseCase.executarPorTituloEAnoLancamento(titulo, anoLancamento);

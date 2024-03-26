@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_CLIENTE_EXISTENTE_PARA_O_EMAIL;
+
 @Component
 public class ClienteExistenteValidator {
-
-    private static final String ERRO_CLIENTE_EXISTENTE_PARA_O_EMAIL = "Já existe um cliente para este email.";
 
     public static void validar(String email, String clienteId, BuscarClienteUseCase buscarClienteUseCase) {
         Optional<ClienteResponseDTO> clienteExistente = buscarClienteUseCase.executarPorEmail(email);

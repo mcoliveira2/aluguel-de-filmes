@@ -34,11 +34,12 @@ public class BuscarAluguelUseCaseTest {
                 .idDoFilme(filmeId)
                 .build();
 
-        when(aluguelRepository.findByIdDoClienteAndIdDoFilme(clienteId, filmeId)).thenReturn(Optional.of(aluguel));
+        when(aluguelRepository.findByIdDoClienteAndIdDoFilmeAndDataDaDevolucaoNull(clienteId, filmeId))
+                .thenReturn(Optional.of(aluguel));
         AluguelResponseDTO result = buscarAluguelUseCase.executar(clienteId, filmeId);
 
         assertEquals(clienteId, result.getIdDoCliente());
         assertEquals(filmeId, result.getIdDoFilme());
-        verify(aluguelRepository).findByIdDoClienteAndIdDoFilme(clienteId, filmeId);
+        verify(aluguelRepository).findByIdDoClienteAndIdDoFilmeAndDataDaDevolucaoNull(clienteId, filmeId);
     }
 }

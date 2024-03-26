@@ -20,7 +20,7 @@ public class BuscarAluguelUseCaseImpl implements BuscarAluguelUseCase {
 
     @Override
     public AluguelResponseDTO executar(String clienteId, String filmeId) {
-        return aluguelRepository.findByIdDoClienteAndIdDoFilme(clienteId, filmeId)
+        return aluguelRepository.findByIdDoClienteAndIdDoFilmeAndDataDaDevolucaoNull(clienteId, filmeId)
                 .map(AluguelMapper::toAluguelResponseDTO)
                 .orElseThrow(AluguelNaoEncontradoException::new);
     }
