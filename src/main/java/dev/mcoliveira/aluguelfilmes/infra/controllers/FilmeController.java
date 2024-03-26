@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface FilmeController {
 
+    ResponseEntity<FilmeResponseDTO> salvarFilme(FilmeRequestDTO filmeRequestDTO);
     ResponseEntity<FilmeResponseDTO> atualizarFilme(String id, FilmeRequestDTO filmeRequestDTO);
     ResponseEntity<FilmeResponseDTO> buscarFilme(String id);
     ResponseEntity<Void> deletarFilme(String id);
     ResponseEntity<List<FilmeResponseDTO>> listarFilmesDisponiveis(Pageable pageable);
-    ResponseEntity<FilmeResponseDTO> salvarFilme(FilmeRequestDTO filmeRequestDTO);
 }
