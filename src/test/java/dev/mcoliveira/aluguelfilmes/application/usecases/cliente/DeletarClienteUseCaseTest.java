@@ -34,9 +34,9 @@ public class DeletarClienteUseCaseTest {
 
         when(aluguelRepository.findByIdDoClienteAndDataDaDevolucaoNull(clienteId))
                 .thenReturn(false);
-        when(clienteRepository.findById(clienteId)).thenReturn(Optional.ofNullable(cliente));
+        when(clienteRepository.findByIdAndDeletadoFalse(clienteId)).thenReturn(Optional.ofNullable(cliente));
         deletarClienteUseCase.executar(clienteId);
 
-        verify(clienteRepository).deleteById(clienteId);
+        verify(clienteRepository).save(cliente);
     }
 }

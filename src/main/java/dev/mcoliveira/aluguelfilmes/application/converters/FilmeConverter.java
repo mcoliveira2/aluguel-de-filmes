@@ -28,6 +28,7 @@ public class FilmeConverter {
                 .anoLancamento(nonNull(dto.getAnoLancamento()) ? dto.getAnoLancamento() : filme.getAnoLancamento())
                 .genero(nonNull(dto.getGenero()) ? dto.getGenero() : filme.getGenero())
                 .disponivel(filme.getDisponivel())
+                .deletado(filme.getDeletado())
                 .build();
     }
 }

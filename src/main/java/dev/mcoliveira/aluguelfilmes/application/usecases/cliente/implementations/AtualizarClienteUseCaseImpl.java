@@ -30,7 +30,8 @@ public class AtualizarClienteUseCaseImpl implements AtualizarClienteUseCase {
     @Override
     public ClienteResponseDTO executar(String id, ClienteRequestDTO clienteRequestDTO) {
         EmailClienteValidator.validar(clienteRequestDTO.getEmail());
-        Cliente clienteExistente = clienteRepository.findById(id).orElseThrow(ClienteNaoEncontradoException::new);
+        Cliente clienteExistente = clienteRepository.findByIdAndDeletadoFalse(id)
+                .orElseThrow(ClienteNaoEncontradoException::new);
         Cliente clienteParaAtualizar = ClienteConverter.toEntityUpdate(clienteRequestDTO, clienteExistente);
         ClienteExistenteValidator.validar(
                 clienteParaAtualizar.getEmail(),

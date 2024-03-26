@@ -25,7 +25,7 @@ public class ListarFilmesDisponiveisUseCaseImpl implements ListarFilmesDisponive
 
     @Override
     public List<FilmeResponseDTO> executar(Pageable pageable) {
-        List<Filme> filmesDisponiveis = filmeRepository.findByDisponivelTrue(pageable);
+        List<Filme> filmesDisponiveis = filmeRepository.findByDisponivelTrueAndDeletadoFalse(pageable);
         return filmesDisponiveis.stream()
                 .map(FilmeMapper::toFilmeResponseDTO)
                 .collect(Collectors.toList());

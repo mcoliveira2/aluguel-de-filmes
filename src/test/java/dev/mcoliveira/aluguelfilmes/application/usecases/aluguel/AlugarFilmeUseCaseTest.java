@@ -2,6 +2,7 @@ package dev.mcoliveira.aluguelfilmes.application.usecases.aluguel;
 
 import dev.mcoliveira.aluguelfilmes.application.usecases.aluguel.implementations.AlugarFilmeUseCaseImpl;
 import dev.mcoliveira.aluguelfilmes.application.usecases.cliente.BuscarClienteUseCase;
+import dev.mcoliveira.aluguelfilmes.application.usecases.filme.AlterarDisponibilidadeFilmeUseCase;
 import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCase;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Aluguel;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.AluguelRequestDTO;
@@ -31,6 +32,8 @@ public class AlugarFilmeUseCaseTest {
     private BuscarFilmeUseCase buscarFilmeUseCase;
     @Mock
     private BuscarClienteUseCase buscarClienteUseCase;
+    @Mock
+    private AlterarDisponibilidadeFilmeUseCase alterarDisponibilidadeFilmeUseCase;
     @InjectMocks
     private AlugarFilmeUseCaseImpl alugarFilmeUseCase;
 

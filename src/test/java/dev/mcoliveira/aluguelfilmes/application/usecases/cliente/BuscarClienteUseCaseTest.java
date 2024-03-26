@@ -33,11 +33,11 @@ public class BuscarClienteUseCaseTest {
                 .id("123")
                 .build();
 
-        when(clienteRepository.findById(clienteId)).thenReturn(Optional.of(cliente));
+        when(clienteRepository.findByIdAndDeletadoFalse(clienteId)).thenReturn(Optional.of(cliente));
         ClienteResponseDTO result = buscarClienteUseCase.executar(clienteId);
 
         assertEquals(clienteId, result.getId());
-        verify(clienteRepository).findById(clienteId);
+        verify(clienteRepository).findByIdAndDeletadoFalse(clienteId);
     }
 
     @Test
@@ -49,11 +49,11 @@ public class BuscarClienteUseCaseTest {
                 .email("email@email.com")
                 .build();
 
-        when(clienteRepository.findByEmail(anyString())).thenReturn(Optional.of(cliente));
+        when(clienteRepository.findByEmailAndDeletadoFalse(anyString())).thenReturn(Optional.of(cliente));
         Optional<ClienteResponseDTO> result =
                 buscarClienteUseCase.executarPorEmail(cliente.getNome());
 
         assertEquals(cliente.getId(), result.get().getId());
-        verify(clienteRepository).findByEmail(cliente.getNome());
+        verify(clienteRepository).findByEmailAndDeletadoFalse(cliente.getNome());
     }
 }

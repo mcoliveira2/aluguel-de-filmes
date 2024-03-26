@@ -43,7 +43,7 @@ class AtualizarFilmeUseCaseTest {
                 .anoLancamento(2022)
                 .build();
 
-        when(filmeRepository.findById(filmeId)).thenReturn(Optional.of(filmeExistente));
+        when(filmeRepository.findByIdAndDeletadoFalse(filmeId)).thenReturn(Optional.of(filmeExistente));
         when(filmeRepository.save(any(Filme.class))).thenAnswer(invocation -> invocation.<Filme>getArgument(0));
         FilmeResponseDTO responseDTO = atualizarFilmeUseCase.executar(filmeId, filmeRequestDTO);
 

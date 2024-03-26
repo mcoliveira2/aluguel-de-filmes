@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/filmes")
+@RequestMapping("/filme")
 public class FilmeControllerImpl implements FilmeController {
 
     private final AtualizarFilmeUseCase atualizarFilmeUseCase;

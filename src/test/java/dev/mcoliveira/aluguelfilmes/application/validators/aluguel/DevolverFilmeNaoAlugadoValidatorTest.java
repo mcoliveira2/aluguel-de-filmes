@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FilmeJaFoiDevolvidoValidatorTest {
+public class DevolverFilmeNaoAlugadoValidatorTest {
     @Mock
     private BuscarFilmeUseCase buscarFilmeUseCase;
 
@@ -27,7 +27,7 @@ public class FilmeJaFoiDevolvidoValidatorTest {
 
         when(buscarFilmeUseCase.executar(filmeId)).thenReturn(filme);
 
-        assertThrows(ValidacaoException.class, () -> FilmeJaFoiDevolvidoValidator.validar(filmeId, buscarFilmeUseCase));
+        assertThrows(ValidacaoException.class, () -> DevolverFilmeNaoAlugadoValidator.validar(filmeId, buscarFilmeUseCase));
     }
 
     @Test
@@ -40,6 +40,6 @@ public class FilmeJaFoiDevolvidoValidatorTest {
 
         when(buscarFilmeUseCase.executar(filmeId)).thenReturn(filme);
 
-        assertDoesNotThrow(() -> FilmeJaFoiDevolvidoValidator.validar(filmeId, buscarFilmeUseCase));
+        assertDoesNotThrow(() -> DevolverFilmeNaoAlugadoValidator.validar(filmeId, buscarFilmeUseCase));
     }
 }

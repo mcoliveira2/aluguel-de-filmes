@@ -43,7 +43,7 @@ class AtualizarClienteUseCaseTest {
                 .email("antigoemail@email.com")
                 .build();
 
-        when(clienteRepository.findById(clienteId)).thenReturn(Optional.of(clienteExistente));
+        when(clienteRepository.findByIdAndDeletadoFalse(clienteId)).thenReturn(Optional.of(clienteExistente));
         when(clienteRepository.save(any(Cliente.class))).thenAnswer(invocation -> invocation.<Cliente>getArgument(0));
         ClienteResponseDTO responseDTO = atualizarClienteUseCase.executar(clienteId, clienteRequestDTO);
 

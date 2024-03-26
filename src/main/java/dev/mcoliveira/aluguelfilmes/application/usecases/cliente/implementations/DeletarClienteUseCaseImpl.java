@@ -3,6 +3,7 @@ package dev.mcoliveira.aluguelfilmes.application.usecases.cliente.implementation
 import dev.mcoliveira.aluguelfilmes.application.exceptions.cliente.ClienteNaoEncontradoException;
 import dev.mcoliveira.aluguelfilmes.application.usecases.cliente.DeletarClienteUseCase;
 import dev.mcoliveira.aluguelfilmes.application.validators.cliente.DeletarClienteValidator;
+import dev.mcoliveira.aluguelfilmes.domain.entities.Cliente;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.AluguelRepository;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ public class DeletarClienteUseCaseImpl implements DeletarClienteUseCase {
     @Override
     public void executar(String clienteId) {
         DeletarClienteValidator.validar(clienteId, aluguelRepository);
-        clienteRepository.findById(clienteId).orElseThrow(ClienteNaoEncontradoException::new);
-        clienteRepository.deleteById(clienteId);
+        Cliente cliente = clienteRepository.findByIdAndDeletadoFalse(clienteId)
+                .orElseThrow(ClienteNaoEncontradoException::new);
+        cliente.setDeletado(true);
+        clienteRepository.save(cliente);
     }
 }
