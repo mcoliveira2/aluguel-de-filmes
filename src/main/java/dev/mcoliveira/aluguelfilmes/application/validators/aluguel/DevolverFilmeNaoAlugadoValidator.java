@@ -5,10 +5,10 @@ import dev.mcoliveira.aluguelfilmes.application.usecases.filme.BuscarFilmeUseCas
 import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
 import org.springframework.stereotype.Component;
 
+import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_FILME_NAO_ALUGADO;
+
 @Component
 public class DevolverFilmeNaoAlugadoValidator {
-
-    private static final String ERRO_FILME_NAO_ALUGADO = "Este filme não está alugado!";
 
     public static void validar(String idDoFilme, BuscarFilmeUseCase buscarFilmeUseCase) {
         FilmeResponseDTO filme = buscarFilmeUseCase.executar(idDoFilme);

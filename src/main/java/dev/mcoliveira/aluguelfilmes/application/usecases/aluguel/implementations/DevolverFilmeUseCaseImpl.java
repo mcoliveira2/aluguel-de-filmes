@@ -40,7 +40,8 @@ public class DevolverFilmeUseCaseImpl implements DevolverFilmeUseCase {
     public AluguelResponseDTO executar(AluguelRequestDTO aluguelRequestDTO) {
         validarAntesDeDevolver(aluguelRequestDTO);
         Aluguel aluguel = aluguelRepository
-                .findByIdDoClienteAndIdDoFilme(aluguelRequestDTO.getIdDoCliente(), aluguelRequestDTO.getIdDoFilme())
+                .findByIdDoClienteAndIdDoFilmeAndDataDaDevolucaoNull(aluguelRequestDTO.getIdDoCliente(),
+                        aluguelRequestDTO.getIdDoFilme())
                 .orElseThrow(AluguelNaoEncontradoException::new);
         aluguel.setDataDaDevolucao(LocalDate.now());
         aluguelRepository.save(aluguel);
