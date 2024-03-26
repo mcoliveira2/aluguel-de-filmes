@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.*;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.*;
 
 
 public interface FilmeController {

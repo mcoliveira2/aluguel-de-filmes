@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_CLIENTE_EXISTENTE_PARA_O_EMAIL;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_CLIENTE_EXISTENTE_PARA_O_EMAIL;
 
 @Component
 public class ClienteExistenteValidator {

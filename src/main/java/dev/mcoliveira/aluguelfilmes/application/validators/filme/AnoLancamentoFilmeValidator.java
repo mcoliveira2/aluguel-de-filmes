@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_ANO_LANCAMENTO_INVALIDO;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_ANO_LANCAMENTO_INVALIDO;
 import static java.util.Objects.nonNull;
 
 @Component

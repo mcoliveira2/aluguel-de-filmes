@@ -4,7 +4,7 @@ import dev.mcoliveira.aluguelfilmes.application.exceptions.ValidacaoException;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.AluguelRepository;
 import org.springframework.stereotype.Component;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_DELETAR_CLIENT_COM_FILME_ALUGADOR;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_DELETAR_CLIENT_COM_FILME_ALUGADOR;
 
 @Component
 public class DeletarClienteValidator {

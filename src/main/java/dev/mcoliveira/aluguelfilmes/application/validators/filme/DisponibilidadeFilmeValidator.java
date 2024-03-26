@@ -4,7 +4,7 @@ import dev.mcoliveira.aluguelfilmes.application.exceptions.ValidacaoException;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import org.springframework.stereotype.Component;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_FILME_ALUGADO_NAO_PODE_DELETAR;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_FILME_ALUGADO_NAO_PODE_DELETAR;
 
 @Component
 public class DisponibilidadeFilmeValidator {

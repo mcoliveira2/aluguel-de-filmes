@@ -1,4 +1,4 @@
-package dev.mcoliveira.aluguelfilmes.application.validators;
+package dev.mcoliveira.aluguelfilmes.infra.exceptions;
 
 public class MensagensDeErro {
 

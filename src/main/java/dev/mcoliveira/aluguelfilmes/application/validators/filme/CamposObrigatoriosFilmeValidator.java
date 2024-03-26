@@ -4,7 +4,7 @@ import dev.mcoliveira.aluguelfilmes.application.exceptions.ValidacaoException;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.FilmeRequestDTO;
 import org.springframework.stereotype.Component;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.*;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.*;
 
 @Component
 public class CamposObrigatoriosFilmeValidator  {

@@ -5,7 +5,7 @@ import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.AluguelResponseDTO;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.ResponseEntity;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.*;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.*;
 
 
 public interface AluguelController {

@@ -4,8 +4,8 @@ import dev.mcoliveira.aluguelfilmes.application.exceptions.ValidacaoException;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.ClienteRequestDTO;
 import org.springframework.stereotype.Component;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_EMAIL_OBRIGATORIO;
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_NOME_OBRIGATORIO;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_EMAIL_OBRIGATORIO;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_NOME_OBRIGATORIO;
 
 @Component
 public class CamposObrigatoriosClienteValidator {

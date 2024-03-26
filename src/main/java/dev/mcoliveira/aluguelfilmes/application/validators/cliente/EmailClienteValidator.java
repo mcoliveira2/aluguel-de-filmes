@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static dev.mcoliveira.aluguelfilmes.application.validators.MensagensDeErro.ERRO_EMAIL_INVALIDO;
+import static dev.mcoliveira.aluguelfilmes.infra.exceptions.MensagensDeErro.ERRO_EMAIL_INVALIDO;
 import static java.util.Objects.nonNull;
 
 @Component
