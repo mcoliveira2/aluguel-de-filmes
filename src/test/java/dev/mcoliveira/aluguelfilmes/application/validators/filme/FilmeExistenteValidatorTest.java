@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -45,7 +46,7 @@ public class FilmeExistenteValidatorTest {
         when(buscarFilmeUseCase.executarPorTituloEAnoLancamento(anyString(), anyInt()))
                 .thenReturn(Optional.empty());
 
-        FilmeExistenteValidator.validar(titulo, anoLancamento, filmeId, buscarFilmeUseCase);
+        assertDoesNotThrow(() -> FilmeExistenteValidator.validar(titulo, anoLancamento, filmeId, buscarFilmeUseCase));
     }
 
     @Test
@@ -60,6 +61,6 @@ public class FilmeExistenteValidatorTest {
         when(buscarFilmeUseCase.executarPorTituloEAnoLancamento(anyString(), anyInt()))
                 .thenReturn(Optional.of(filmeExistente));
 
-        FilmeExistenteValidator.validar(titulo, anoLancamento, filmeId, buscarFilmeUseCase);
+        assertDoesNotThrow(() -> FilmeExistenteValidator.validar(titulo, anoLancamento, filmeId, buscarFilmeUseCase));
     }
 }

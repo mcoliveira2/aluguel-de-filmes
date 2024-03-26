@@ -31,8 +31,17 @@ class AtualizarFilmeUseCaseTest {
     @Test
     void atualizarFilme_Successo() {
         String filmeId = "1";
-        FilmeRequestDTO filmeRequestDTO = FilmeRequestDTO.builder().titulo("Novo Título").anoLancamento(2021).build();
-        Filme filmeExistente = Filme.builder().id(filmeId).titulo("Título Antigo").anoLancamento(2022).build();
+        FilmeRequestDTO filmeRequestDTO = FilmeRequestDTO
+                .builder()
+                .titulo("Novo Título")
+                .anoLancamento(2021)
+                .build();
+        Filme filmeExistente = Filme
+                .builder()
+                .id(filmeId)
+                .titulo("Título Antigo")
+                .anoLancamento(2022)
+                .build();
 
         when(filmeRepository.findById(filmeId)).thenReturn(Optional.of(filmeExistente));
         when(filmeRepository.save(any(Filme.class))).thenAnswer(invocation -> invocation.<Filme>getArgument(0));

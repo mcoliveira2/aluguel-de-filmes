@@ -13,5 +13,4 @@ public class ClienteResponseDTO {
     private String id;
     private String nome;
     private String email;
-    private String telefone;
 }
