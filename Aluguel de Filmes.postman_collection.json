@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "20879237-7e29-4a33-8296-d2d53289e9ce",
+		"name": "Aluguel de Filmes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3236340"
+	},
+	"item": [
+		{
+			"name": "Filme",
+			"item": [
+				{
+					"name": "Salvar Filme",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Filme Drama\",\r\n    \"diretor\": \"Diretor filme Drama\",\r\n    \"anoLancamento\": 2000,\r\n    \"genero\": \"DRAMA\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/filme",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"filme"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Filme",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Mudou para Suspense\",\r\n    \"diretor\": \"Mudou para Diretor de Suspense\",\r\n    \"anoLancamento\": 2010,\r\n    \"genero\": \"SUSPENSE\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/filme/6602f9b6beed400d20ac8ec2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"filme",
+								"6602f9b6beed400d20ac8ec2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Filmes Disponíveis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/filme/disponiveis?page=0&size=20&sort=titulo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"filme",
+								"disponiveis"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "titulo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Filme pelo ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/filme/6602f9b6beed400d20ac8ec2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"filme",
+								"6602f9b6beed400d20ac8ec2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Filme pelo ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/filme/6602f9b6beed400d20ac8ec2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"filme",
+								"6602f9b6beed400d20ac8ec2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Salvar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Cliente\",\r\n    \"email\": \"cliente@email.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Cliente 2\",\r\n    \"email\": \"cliente2@email.com\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/cliente/6602f9edbeed400d20ac8ec3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente",
+								"6602f9edbeed400d20ac8ec3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Cliente pelo ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cliente/6602f9edbeed400d20ac8ec3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente",
+								"6602f9edbeed400d20ac8ec3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Cliente pelo ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/cliente/6602f9edbeed400d20ac8ec3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"cliente",
+								"6602f9edbeed400d20ac8ec3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Aluguel",
+			"item": [
+				{
+					"name": "Alugar Filme",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idDoFilme\": \"66027183c310f6743f4fcc90\",\r\n  \"idDoCliente\": \"660270aec310f6743f4fcc8c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/aluguel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluguel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Aluguel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/aluguel/cliente/660270aec310f6743f4fcc8c/filme/66027183c310f6743f4fcc90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluguel",
+								"cliente",
+								"660270aec310f6743f4fcc8c",
+								"filme",
+								"66027183c310f6743f4fcc90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Devolver Filme",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idDoFilme\": \"66027183c310f6743f4fcc90\",\r\n  \"idDoCliente\": \"660270aec310f6743f4fcc8c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/aluguel/devolver",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"aluguel",
+								"devolver"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
