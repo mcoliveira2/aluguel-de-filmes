@@ -2,6 +2,7 @@ package dev.mcoliveira.aluguelfilmes.application.usecases.cliente;
 
 import dev.mcoliveira.aluguelfilmes.application.usecases.cliente.implementations.DeletarClienteUseCaseImpl;
 import dev.mcoliveira.aluguelfilmes.domain.entities.Cliente;
+import dev.mcoliveira.aluguelfilmes.infra.repositories.AluguelRepository;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.ClienteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +19,8 @@ import static org.mockito.Mockito.when;
 public class DeletarClienteUseCaseTest {
     @Mock
     private ClienteRepository clienteRepository;
+    @Mock
+    private AluguelRepository aluguelRepository;
     @InjectMocks
     private DeletarClienteUseCaseImpl deletarClienteUseCase;
 
@@ -29,6 +32,8 @@ public class DeletarClienteUseCaseTest {
                 .id(clienteId)
                 .build();
 
+        when(aluguelRepository.findByIdDoClienteAndDataDaDevolucaoNull(clienteId))
+                .thenReturn(false);
         when(clienteRepository.findById(clienteId)).thenReturn(Optional.ofNullable(cliente));
         deletarClienteUseCase.executar(clienteId);
 

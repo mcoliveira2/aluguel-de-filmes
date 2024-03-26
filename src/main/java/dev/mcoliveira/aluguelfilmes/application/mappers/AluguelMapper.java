@@ -7,14 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class AluguelMapper {
 
-    public AluguelResponseDTO toAluguelResponseDTO(Aluguel aluguel) {
+    public static AluguelResponseDTO toAluguelResponseDTO(Aluguel aluguel) {
         return AluguelResponseDTO.builder()
-                .id(aluguel.getId())
                 .idDoFilme(aluguel.getIdDoFilme())
                 .idDoCliente(aluguel.getIdDoCliente())
                 .dataDoAluguel(aluguel.getDataDoAluguel())
-                .dataDevolucaoPrevista(aluguel.getDataDevolucaoPrevista())
-                .dataDevolucao(aluguel.getDataDevolucao())
+                .dataDaDevolucao(aluguel.getDataDaDevolucao())
                 .build();
     }
 }

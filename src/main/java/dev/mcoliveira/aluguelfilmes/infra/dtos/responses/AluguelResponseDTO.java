@@ -12,10 +12,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AluguelResponseDTO {
-    private String id;
     private String idDoFilme;
     private String idDoCliente;
     private LocalDate dataDoAluguel;
-    private LocalDate dataDevolucaoPrevista;
-    private LocalDate dataDevolucao;
+    private LocalDate dataDaDevolucao;
 }
