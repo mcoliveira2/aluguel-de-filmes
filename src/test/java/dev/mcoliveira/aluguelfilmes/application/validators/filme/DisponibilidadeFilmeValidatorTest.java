@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
@@ -26,7 +27,7 @@ public class DisponibilidadeFilmeValidatorTest {
 
         when(buscarFilmeUseCase.executar(filmeId)).thenReturn(filmeResponseDTO);
 
-        DisponibilidadeFilmeValidator.validar(filmeId, buscarFilmeUseCase);
+        assertDoesNotThrow(() -> DisponibilidadeFilmeValidator.validar(filmeId, buscarFilmeUseCase));
     }
 
     @Test

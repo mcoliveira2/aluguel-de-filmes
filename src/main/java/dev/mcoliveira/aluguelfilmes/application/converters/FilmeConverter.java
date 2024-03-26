@@ -2,14 +2,14 @@ package dev.mcoliveira.aluguelfilmes.application.converters;
 
 import dev.mcoliveira.aluguelfilmes.domain.entities.Filme;
 import dev.mcoliveira.aluguelfilmes.infra.dtos.requests.FilmeRequestDTO;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import static java.util.Objects.nonNull;
 
 @Component
+@NoArgsConstructor
 public class FilmeConverter {
-
-    public FilmeConverter() {}
 
     public static Filme toEntity(FilmeRequestDTO dto) {
         return Filme.builder()
