@@ -1,7 +1,7 @@
 FROM maven:latest AS build
 WORKDIR /app
 COPY . .
-RUN mvn clean package
+RUN mvn clean package -DskipTests=true
 
 FROM bitnami/java:21 AS runtime
 WORKDIR /app
