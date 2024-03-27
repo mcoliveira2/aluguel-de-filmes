@@ -15,12 +15,10 @@ import dev.mcoliveira.aluguelfilmes.infra.dtos.responses.FilmeResponseDTO;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.AluguelRepository;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.ClienteRepository;
 import dev.mcoliveira.aluguelfilmes.infra.repositories.FilmeRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,14 +44,6 @@ public class AlugarFilmeIntegracaoTest {
     private ClienteRepository clienteRepository;
     @Autowired
     private AluguelRepository aluguelRepository;
-
-    @Autowired
-    private MongoTemplate mongoTemplate;
-
-    @AfterEach
-    public void limparBancoDeDados() {
-        mongoTemplate.getDb().drop();
-    }
 
     @Test
     public void testarSalvarFilmeSalvarClienteAlugarFilmeEDevolverFilme_Sucesso() {
