@@ -6,6 +6,4 @@ spring:
     name: aluguelfilmes
   data:
     mongodb:
-      host: ${MONGODB_HOST:localhost}
-      port: 27017
-      database: aluguelfilmes
+      uri: ${MONGODB_URI:mongodb://localhost:27017/aluguelfilmes}
